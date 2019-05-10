@@ -1,0 +1,19 @@
+<% include ./partials/header %>
+
+    <div class="jumbotron" style="text-align:center;background:cyan">
+        <h4>References for <%= course.name %></h4>
+        <% if(course.instructor.username == currentUser.username){ %>
+            <form action="/courses/<%=course._id%>/references" method="POST">
+                <input type="text" name="referencelink" placeholder="Reference Link">
+                <input type="submit">
+            </form>
+        <% } %>
+    </div>
+    <div class="container">
+        <% course.references.forEach(function(ref){ %>
+           <a href="<%= ref %>" target="_blank"><%= ref %></a>
+           <br>
+           <br>
+        <% }); %>
+    </div>
+    

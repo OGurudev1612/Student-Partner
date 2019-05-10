@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel = "icon" href = "/images/sp.png" type = "image/x-icon">
+        <title>Students Partner</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Student_Partner</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <% if(!currentUser){ %>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">SignUp</a></li>
+                    <%  }else{ %>
+                        <li><a href="/courses"> Signed In As <%= currentUser.username %></a></li>
+                        <li><a href="/logout">LogOut</a></li>
+                      <%  } %>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>

@@ -1,0 +1,26 @@
+<% include ./partials/header %>
+<div class="row">
+        <h1 style="text-align: center">Create a New Lesson</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/courses/<%= course._id %>/lessons" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="newlesson[lesson]" placeholder="unit number">
+                </div>
+                <!--<div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
+                </div>-->
+                <div class="form-group">
+                    <input class="form-control" type="text" name="newlesson[name]" placeholder="unit name">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="newlesson[description]" placeholder="unit description">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/courses">Go Back</a>
+        </div>
+    </div>
+<% include ./partials/footer %>

@@ -1,0 +1,147 @@
+<html>
+    <head>
+        <link rel = "icon" href = "/images/sp.png" type = "image/x-icon">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <style>
+            .jumbotron{
+                background-color: darkcyan;
+                color:#fff;
+            }
+            .box{
+                border:1px solid #ccc;
+                padding:20px;
+            }
+            form{
+                width:40%;
+                margin-right:30%;
+                margin-left:30%;
+            }
+            body { background: #eee }
+
+            .container-fluid { max-width: 1200px; }
+            
+            header {
+            	background: #563d7c;
+            	padding: 2em 1em;
+            	color: #fff;
+            	margin-bottom: 2em;
+            	h1 {
+            		font-weight: 200;
+            	}
+            }
+            
+            .card {
+            	background: #fff;
+            	box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            	img {
+            		width: 100%;
+            	}
+            }
+            
+            [class*="row"] {
+            	margin-bottom: 1em;
+              justify-content: center;
+            }
+            
+            [class*="col-"] {
+            	background: #efefef;
+            	border: 1px solid #ddd;
+            	padding-top: .75rem;
+            	padding-bottom: .75rem;
+            	width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-light bg-faded">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <span class="icon-bar"></span>
+            </button>
+            
+            <!-- Brand -->
+            <a class="navbar-brand" href="/">Student_Partner</a>
+            
+            <!-- Links -->
+            <div class="collapse navbar-collapse justify-content-end" id="nav-content">   
+            <ul class="navbar-nav">
+            <li class="nav-item">
+            <a class="nav-link" href="/courses">Signed In As <%= currentUser.username %></a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/logout">LogOut</a>
+            </li>
+            </ul>
+            </nav>
+            
+            </div>
+
+        <div class="jumbotron text-center">
+          <h1><%= lesson.name.toUpperCase() %></h1>
+          <p><%= lesson.description.charAt(0).toUpperCase() + lesson.description.slice(1)%></p>
+          <a href="/courses/<%= course._id %>/<%= lesson._id %>/newdoc" class="btn btn-lg btn-primary">Upload File</a>
+        </div>
+        <div class="container">
+            <% lesson.docs.forEach(function(doc){ %>
+                <section>
+                  <div class="container py-3">
+                    <div class="card">
+                      <div class="row ">
+                        <div class="col-md-4">
+                            <embed src="<%= doc.docs %>" width="200px" height="200px">
+                          </div>
+                              <div class="col-md-8 px-3">
+                            <div class="card-block px-3">
+                              <h4 class="card-title"><%= doc.title %></h4>
+                              <p class="card-text"><%= doc.description %></p>
+                              <br>
+                              <br>
+                              <p class="text-muted">Uploaded By <%= doc.username %></p>
+                              <a href="<%= doc.docs %>" target="_blank" class="btn btn-primary">Read More</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+            <% }); %>
+        </div>
+        
+        
+        <!--<div class="container">
+          <div class="row">
+            <div class="col-sm-3">
+                <div class="box">
+              <h3>Column 3</h3> 
+              <p>Lorem ipsum dolor..</p>
+              <p>Ut enim ad..</p>
+            </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="box">
+              <h3>Column 3</h3> 
+              <p>Lorem ipsum dolor..</p>
+              <p>Ut enim ad..</p>
+            </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="box">
+              <h3>Column 3</h3> 
+              <p>Lorem ipsum dolor..</p>
+              <p>Ut enim ad..</p>
+            </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="box">
+              <h3>Column 3</h3> 
+              <p>Lorem ipsum dolor..</p>
+              <p>Ut enim ad..</p>
+            </div>
+            </div>
+          </div>
+        </div> -->
+    </body>
+</html>

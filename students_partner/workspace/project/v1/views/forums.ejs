@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <link rel = "icon" href = "/images/sp.png" type = "image/x-icon">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <style>
+            .jumbotron{
+                background-color: darkcyan;
+                color:#fff;
+            }
+            .box{
+                border:1px solid #ccc;
+                padding:20px;
+            }
+            form{
+                width:40%;
+                margin-right:30%;
+                margin-left:30%;
+            }
+            body { background: #eee }
+
+            .container-fluid { max-width: 1200px; }
+            
+            header {
+            	background: #563d7c;
+            	padding: 2em 1em;
+            	color: #fff;
+            	margin-bottom: 2em;
+            	h1 {
+            		font-weight: 200;
+            	}
+            }
+            
+            .card {
+            	background: #fff;
+            	box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            	img {
+            		width: 100%;
+            	}
+            }
+            
+            [class*="row"] {
+            	margin-bottom: 1em;
+              justify-content: center;
+            }
+            
+            [class*="col-"] {
+            	background: #efefef;
+            	border: 1px solid #ddd;
+            	padding-top: .75rem;
+            	padding-bottom: .75rem;
+            	width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-light bg-faded">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <span class="icon-bar"></span>
+            </button>
+            
+            <!-- Brand -->
+            <a class="navbar-brand" href="/">Student_Partner</a>
+            
+            <!-- Links -->
+            <div class="collapse navbar-collapse justify-content-end" id="nav-content">   
+            <ul class="navbar-nav">
+            <li class="nav-item">
+            <a class="nav-link" href="/courses">Signed In As <%= currentUser.username %></a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/logout">LogOut</a>
+            </li>
+            </ul>
+            </nav>
+            
+            </div>
+    <div class="container">
+        <div class="jumbotron" style="text-align:center">
+            <h2>Forums
+            <a class="btn btn-md btn-info pull-right" href="/forums/new">Raise a Question</a></h2>
+        </div>
+    </div>
+    <div class="container">
+            <% forum.forEach(function(question){ %>
+                <section>
+                  <div class="container py-3">
+                    <div class="card">
+                      <div class="row ">
+                        <div class="col-md-4">
+                            <embed src="data:image/png;base64,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" width="200px" height="200px">
+                          </div>
+                              <div class="col-md-8 px-3">
+                            <div class="card-block px-3">
+                              <h4 class="card-title"><%= question.title %></h4>
+                              <% var arr= question.keywords.split(' ') %>
+                              <% arr.forEach(function(label){ %>
+                                  <span class="badge badge-pill badge-warning"><%= label %></span>
+                              <% }); %>
+                              <p class="card-text"><%= question.description %></p>
+                              <br>
+                              <br>
+                              <p class="text-muted">Uploaded By <%= question.username %></p>
+                              <a href="/forums/<%= question._id %>" class="btn btn-primary">Read More</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+            <% }); %>
+        </div>
