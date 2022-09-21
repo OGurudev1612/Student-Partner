@@ -26,9 +26,8 @@ var storage = multer.diskStorage({
   }
 });
 var imageFilter = function (req, file, cb) {
-    // accept image files only
     if (!file.originalname.match(/\.(jpg|jpeg|png|gif|pdf|24|mp4|mp3|pptx|docx)$/i)) {
-        return cb(new Error('Only image and pdf files are allowed!'), false);
+        return cb(new Error('Only Specific files are allowed!'), false);
     }
     cb(null, true);
 };
@@ -90,7 +89,6 @@ app.post("/register",function(req,res){
        else{
            console.log(user);
            passport.authenticate("local")(req,res,function(){
-              //req.flash("success","Welcome To YelpCamp " + user.username);
               res.redirect("/courses"); 
            });
        }
@@ -108,10 +106,6 @@ app.post("/login",passport.authenticate("local",{
     failureRedirect:"/login"
     }),
     function(req,res){
-        /*passport.authenticate("local")(req,res,function(){
-              req.flash("success","Welcome To YelpCamp " + currentUser);
-              res.redirect("/campgrounds"); 
-           });*/
 });
 
 app.get("/logout",function(req,res){
